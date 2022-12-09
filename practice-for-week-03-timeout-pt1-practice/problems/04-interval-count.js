@@ -11,15 +11,41 @@ node with the examples below.
 
 Example
 
+intervalCount(function () {
+  console.log('hi');
+}, 500, 3); // prints 'hi' at 500ms intervals a total of 3 times
+
 ***********************************************************************/
 
-function intervalCount(cb, delay, amount) {
+// function intervalCount(cb, delay, amount) {
+//   let count = 0;
 
+//   let interval = setInterval(() => {
+//     cb();
+//     count++
+//     if (count === amount) clearInterval(interval);
+//   }, delay);
+
+//   return interval;
+// }
+
+const  intervalCount = (cb, delay, amount) => {
+  debugger;
+  let inter = setInterval(() => {
+    cb();
+  }, delay)
+
+  if (amount === 0) clearInterval(inter);
+
+  amount--;
+  return intervalCount(cb, delay, amount);
 }
 
-intervalCount(function() {
-    console.log('hi');
+
+intervalCount(function () {
+  console.log('hi');
 }, 500, 3); // prints 'hi' at 500ms intervals a total of 3 times
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
   module.exports = intervalCount;
